@@ -1,6 +1,6 @@
 # Triple Pivot
 
-A way to link 3 many-to-many relations together in Laravel 4's Eloquent.
+A way to link 3 many-to-many relations together in แก้สำหรับ Laravel 5 แล้ว's Eloquent.
 
 ---
 
@@ -10,12 +10,12 @@ A way to link 3 many-to-many relations together in Laravel 4's Eloquent.
 
 ### Setup
 
-1. Create 3 models: User, Tag, Track
+1. ตอนนี้ใช้กับ 3 Model Employee, Division, Position
 2. Set up your tables (users, tags, tracks, users_tags_tracks)
 3. Require in `composer.json` and `config/app.php`
 4. Add the trait in all 3 models
 5. Define the relation method as `->tripleBelongsToMany()`
-6. (Optional) Create a nice-name relation for the `->third()` method
+6. (Optional) ในกรณีที่ไม่ต้องการเปลี่ยน the `->third()` method
 
 ---
 
