@@ -51,6 +51,10 @@ A way to link 3 many-to-many relations together in แก้สำหรับ L
 	$emp->divisions()->newPivotStatementForId( $division_id )->wherePositionId( $position_id )->delete();
 	หรือ
 	$emp->position()->newPivotStatementForId( $position_id )->whereDivisionId( $division_id )->delete();
+	//อีกวิธีหนึ่งคือ เก็บ pivot id ของ row นั้นแล้วลบตาม pivot table id
+	$emp->divisions()->newPivotStatementForId( $division_id )->whereId( $pivot_id )->delete();
+	หรือ
+	$emp->positions()->newPivotStatementForId( $position_id )->whereId( $pivot_id )->delete();
 
 ---
 
