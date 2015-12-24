@@ -56,6 +56,15 @@ A way to link 3 many-to-many relations together in แก้สำหรับ L
 	หรือ
 	$emp->positions()->newPivotStatementForId( $position_id )->whereId( $pivot_id )->delete();
 
+	//สำหรับการ update ในตาราง pivot สามารถทำได้ โดยใช้ updateExistingPivot ดังนี้
+	//1.update โดยใช้ id ในตาราง pivot เป็นหลัก
+	$emp->divisions()->wherePivot('id','=',$pivot_id)->updateExistingPivot( $division_id, ['is_primary'=>0, ...attribute อื่นๆ เช่น position_id หรือ division_id เอง ...]);
+	//2.wherePivot แบบต่อเนื่อง
+	$emp->divisions()->wherePivot('position_id','=', $position_id)
+	->wherePivot('effective_date','=',null)
+	->wherePivot('is_primary','=','0')
+	->updateExistingPivot( $division_id, ['is_primary'=>0 ... ]);
+	
 ---
 
 ## Setup
