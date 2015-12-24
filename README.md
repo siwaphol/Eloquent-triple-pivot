@@ -44,6 +44,13 @@ A way to link 3 many-to-many relations together in แก้สำหรับ L
 
 	//สำหรับ Position ตอนนี้ใช้ employees กับ divisions
 	//สำหรับ Division ตอนนี้ใช้ employees กับ positions
+	
+	//การ detach 
+	//เพราะไม่สามารถ override detach() behavior เก่าได้ เพราะ detach ไม่รับ attributes เพิ่มเติมเหมือนกับ attach ทำให้ reference ไป third id ไม่ได้
+	//ถ้าใช้ detach([$id1, $id2]) relation ที่ถูก detach ที่มี id ตรงกับ id1 ทั้งหมดจะถูกลบ การลบแบบ 1 division_employee_position ที่ทำได้ตอนนี้คือใช้
+	$emp->divisions()->newPivotStatementForId( $division_id )->wherePositionId( $position_id )->delete();
+	หรือ
+	$emp->position()->newPivotStatementForId( $position_id )->whereDivisionId( $division_id )->delete();
 
 ---
 
